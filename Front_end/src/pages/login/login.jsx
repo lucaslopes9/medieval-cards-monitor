@@ -26,7 +26,7 @@ function Login() {
       if (resposta.ok && dados.sucesso) {
         alert(dados.mensagem);
         localStorage.setItem("usuario", JSON.stringify(dados.usuario));
-        // window.location.href = "/dashboard";
+         window.location.href = "/dashboard";
       } else {
         setErro(dados.mensagem || "Erro ao fazer login.");
       }
