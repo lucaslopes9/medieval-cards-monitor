@@ -20,10 +20,29 @@ app = Flask(__name__)
 
 CORS(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
-    "DATABASE_URL"
-)
 
+DATABASE_URL = os.getenv("DATABASE_URL") or os.getenv("SQLALCHEMY_DATABASE_URI")
+
+print("DEBUG DATABASE_URL:", bool(os.getenv("DATABASE_URL")))
+print("DEBUG SQLALCHEMY_DATABASE_URI:", bool(os.getenv("SQLALCHEMY_DATABASE_URI")))
+print("DEBUG DATABASE_URL_RESOLVIDA:", bool(DATABASE_URL))
+
+
+
+if not DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL não foi encontrada nas variáveis de ambiente."
+    )
+
+# Compatibilidade com URLs postgres:// antigas
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace(
+        "postgres://",
+        "postgresql://",
+        1
+    )
+
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)

@@ -1,0 +1,7 @@
+Flask
+gunicorn
+flask-cors
+Flask-SQLAlchemy
+python-dotenv
+requests
+psycopg2-binary
