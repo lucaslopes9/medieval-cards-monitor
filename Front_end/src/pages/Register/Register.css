@@ -51,11 +51,22 @@
   font-size: 14px;
   box-sizing: border-box;
   transition: border-color 0.2s;
+  background-color: #ffffff; /* Garante o fundo claro */
+  color: #333333;            /* Garante a cor do texto legível */
 }
 
 .form-group input:focus {
   outline: none;
   border-color: #007bff;
+}
+
+/* Corrige o comportamento padrão do navegador mobile ao usar autofill (salvar/preencher senhas) */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover, 
+.form-group input:-webkit-autofill:focus, 
+.form-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+  -webkit-text-fill-color: #333333 !important;
 }
 
 button[type="submit"] {

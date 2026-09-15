@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./Register.css";
 
+import { Eye, EyeOff } from "lucide-react";
+
 function Register() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -94,10 +96,12 @@ function Register() {
                   transform: "translateY(-50%)",
                   cursor: "pointer",
                   userSelect: "none",
-                  fontSize: "16px",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "#666",
                 }}
               >
-                {mostrarSenha ? "👁️‍🗨️" : "👁️"}
+                {mostrarSenha ? <EyeOff size={20} /> : <Eye size={20} />}
               </span>
             </div>
           </div>
