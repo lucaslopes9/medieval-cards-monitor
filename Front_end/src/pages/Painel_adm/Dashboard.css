@@ -88,9 +88,14 @@
 
 .form-section form {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   align-items: flex-end;
+}
+
+.form-section form .btn-cadastrar {
+  grid-column: 1 / -1;
+  width: 100%;
 }
 
 .input-group {
@@ -119,7 +124,10 @@
 }
 
 .btn-cadastrar {
-  padding: 10px 20px;
+  grid-column: 1 / -1;
+  width: fit-content;      /* Faz o botão ter o tamanho apenas do texto + espaçamento */
+  justify-self: center;    /* Centraliza o botão no meio do formulário */
+  padding: 12px 30px;      /* Deixa ele com um bom tamanho proporcional */
   background-color: #0284c7;
   color: white;
   border: none;
@@ -127,12 +135,13 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
   height: 41px;
+  transition: all 0.3s ease; /* Suaviza a animação */
 }
 
 .btn-cadastrar:hover {
   background-color: #0369a1;
+  transform: scale(1.05);   /* Expande levemente para a frente ao passar o mouse */
 }
 
 .list-section {

@@ -93,8 +93,6 @@ function Dashboard() {
         totalListings:
           resultado.total_listings || 0,
 
-        // NOVO:
-        // Guarda todas as ofertas dos vendedores
         ofertas:
           resultado.ofertas || []
       };
@@ -135,6 +133,7 @@ function Dashboard() {
       >
 
         <header>
+
           <h1>
             Painel Administrativo – Medieval Cards
           </h1>
@@ -143,6 +142,7 @@ function Dashboard() {
             Gerencie seus produtos selados e acompanhe os preços do
             TCGplayer.
           </p>
+
         </header>
 
         <section className="form-section">
@@ -157,110 +157,166 @@ function Dashboard() {
             style={{
               display: 'grid',
               gridTemplateColumns:
-                'repeat(auto-fit, minmax(150px, 1fr))',
-              gap: '10px'
+                'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: '12px',
+              alignItems: 'center'
             }}
           >
 
-            <input
-              type="text"
-              placeholder="Nome do Produto"
-              value={nomeCard}
-              onChange={(e) =>
-                setNomeCard(e.target.value)
-              }
-            />
+            {/* NOME DO PRODUTO */}
+            <div className="form-group">
 
-            <input
-              type="text"
-              placeholder="Edição / Set"
-              value={edicao}
-              onChange={(e) =>
-                setEdicao(e.target.value)
-              }
-            />
+              <label htmlFor="nomeCard">
+                Nome do produto selado/fechado
+              </label>
 
-            <select
-              value={jogo}
-              onChange={(e) =>
-                setJogo(e.target.value)
-              }
-            >
-              <option value="Magic">
-                Magic: The Gathering
-              </option>
+              <input
+                id="nomeCard"
+                type="text"
+                placeholder="Nome do produto"
+                value={nomeCard}
+                onChange={(e) =>
+                  setNomeCard(e.target.value)
+                }
+              />
 
-              <option value="Pokemon">
-                Pokémon TCG
-              </option>
+            </div>
 
-              <option value="Yugioh">
-                Yu-Gi-Oh!
-              </option>
+            {/* EDIÇÃO / SET */}
+            <div className="form-group">
 
-              <option value="One Piece Card Game">
-                One Piece Card Game
-              </option>
-            </select>
+              <label htmlFor="edicao">
+                Edição / Set
+              </label>
 
-            <select
-              value={tipo}
-              onChange={(e) =>
-                setTipo(e.target.value)
-              }
-            >
-              <option value="Booster Box">
-                Booster Box
-              </option>
+              <input
+                id="edicao"
+                type="text"
+                placeholder="Edição / Set"
+                value={edicao}
+                onChange={(e) =>
+                  setEdicao(e.target.value)
+                }
+              />
 
-              <option value="Booster Pack">
-                Booster Pack
-              </option>
+            </div>
 
-              <option value="Sleeved Booster Pack">
-                Sleeved Booster Pack
-              </option>
+            {/* JOGO */}
+            <div className="form-group">
 
-              <option value="Starter Deck">
-                Starter Deck
-              </option>
+              <label htmlFor="jogo">
+                Jogo
+              </label>
 
-              <option value="Starter Kit">
-                Starter Kit
-              </option>
+              <select
+                id="jogo"
+                value={jogo}
+                onChange={(e) =>
+                  setJogo(e.target.value)
+                }
+              >
 
-              <option value="Elite Trainer Box">
-                Elite Trainer Box (ETB)
-              </option>
+                <option value="Magic">
+                  Magic: The Gathering
+                </option>
 
-              <option value="Bundle">
-                Bundle
-              </option>
+                <option value="Pokemon">
+                  Pokémon TCG
+                </option>
 
-              <option value="Commander Deck">
-                Commander Deck
-              </option>
+                <option value="Yugioh">
+                  Yu-Gi-Oh!
+                </option>
 
-              <option value="Booster Box Case">
-                Booster Box Case
-              </option>
-            </select>
+                <option value="One Piece Card Game">
+                  One Piece Card Game
+                </option>
 
-            <input
-              type="number"
-              step="0.01"
-              placeholder="Seu Preço (R$)"
-              value={precoLoja}
-              onChange={(e) =>
-                setPrecoLoja(e.target.value)
-              }
-            />
+              </select>
 
+            </div>
+
+            {/* TIPO DE EMBALAGEM */}
+            <div className="form-group">
+
+              <label htmlFor="tipo">
+                Tipo de embalagem
+              </label>
+
+              <select
+                id="tipo"
+                value={tipo}
+                onChange={(e) =>
+                  setTipo(e.target.value)
+                }
+              >
+
+                <option value="Booster Box">
+                  Booster Box
+                </option>
+
+                <option value="Booster Pack">
+                  Booster Pack
+                </option>
+
+                <option value="Sleeved Booster Pack">
+                  Sleeved Booster Pack
+                </option>
+
+                <option value="Starter Deck">
+                  Starter Deck
+                </option>
+
+                <option value="Starter Kit">
+                  Starter Kit
+                </option>
+
+                <option value="Elite Trainer Box">
+                  Elite Trainer Box (ETB)
+                </option>
+
+                <option value="Bundle">
+                  Bundle
+                </option>
+
+                <option value="Commander Deck">
+                  Commander Deck
+                </option>
+
+                <option value="Booster Box Case">
+                  Booster Box Case
+                </option>
+
+              </select>
+
+            </div>
+
+            {/* PREÇO DE VENDA DA LOJA */}
+            <div className="form-group">
+
+              <label htmlFor="precoLoja">
+                Preço de venda da sua loja
+              </label>
+
+              <input
+                id="precoLoja"
+                type="number"
+                step="0.01"
+                placeholder="Preço de venda (R$)"
+                value={precoLoja}
+                onChange={(e) =>
+                  setPrecoLoja(e.target.value)
+                }
+              />
+
+            </div>
+
+            {/* BOTÃO */}
             <button
               type="submit"
               className="btn-cadastrar"
             >
-               Pesquisar
+              Pesquisar preços no TCGplayer
             </button>
 
           </form>
@@ -296,11 +352,11 @@ function Dashboard() {
               >
 
                 <th style={{ padding: '10px' }}>
-                  Produto
+                  Produto selado/fechado
                 </th>
 
                 <th style={{ padding: '10px' }}>
-                  Edição
+                  Edição / Set
                 </th>
 
                 <th style={{ padding: '10px' }}>
@@ -308,15 +364,15 @@ function Dashboard() {
                 </th>
 
                 <th style={{ padding: '10px' }}>
-                  Tipo
+                  Tipo de embalagem
                 </th>
 
                 <th style={{ padding: '10px' }}>
-                  Seu Preço
+                  Preço de venda da sua loja
                 </th>
 
                 <th style={{ padding: '10px' }}>
-                  Menor Preço TCGplayer
+                  Menor preço do TCGplayer
                 </th>
 
                 <th style={{ padding: '10px' }}>
@@ -324,7 +380,7 @@ function Dashboard() {
                 </th>
 
                 <th style={{ padding: '10px' }}>
-                  Ofertas
+                  Ofertas de vendedores
                 </th>
 
               </tr>
@@ -411,7 +467,9 @@ function Dashboard() {
                             >
 
                               <div>
+
                                 <strong>
+
                                   {index === 0
                                     ? '🥇 '
                                     : ''
@@ -420,7 +478,9 @@ function Dashboard() {
                                   {oferta.vendedor ||
                                     'Vendedor não informado'
                                   }
+
                                 </strong>
+
                               </div>
 
                               <div
@@ -429,6 +489,7 @@ function Dashboard() {
                                     '5px'
                                 }}
                               >
+
                                 <strong>
                                   US$ {
                                     Number(
@@ -436,6 +497,7 @@ function Dashboard() {
                                     ).toFixed(2)
                                   }
                                 </strong>
+
                               </div>
 
                               <div>
