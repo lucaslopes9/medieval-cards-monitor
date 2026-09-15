@@ -19,7 +19,7 @@ function Dashboard() {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/buscar-preco',
+        'https://back-end-waf6.onrender.com/buscar-preco',
         {
           method: 'POST',
           headers: {
