@@ -5,6 +5,7 @@ function Register() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [mostrarSenha, setMostrarSenha] = useState(false); // Estado para controlar a visibilidade da senha
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
 
@@ -74,14 +75,31 @@ function Register() {
 
           <div className="form-group">
             <label htmlFor="password">Senha</label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Digite sua senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
-            />
+            <div className="password-container" style={{ position: "relative" }}>
+              <input
+                type={mostrarSenha ? "text" : "password"}
+                id="password"
+                placeholder="Digite sua senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                required
+                style={{ width: "100%", paddingRight: "40px" }}
+              />
+              <span
+                onClick={() => setMostrarSenha(!mostrarSenha)}
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  userSelect: "none",
+                  fontSize: "16px",
+                }}
+              >
+                {mostrarSenha ? "👁️‍🗨️" : "👁️"}
+              </span>
+            </div>
           </div>
 
           <button type="submit">Cadastrar</button>
