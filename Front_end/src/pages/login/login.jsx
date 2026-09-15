@@ -13,7 +13,7 @@ function Login() {
     setErro("");
 
     try {
-      const resposta = await fetch("http://localhost:5000/login", {
+      const resposta = await fetch("https://back-end-waf6.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
