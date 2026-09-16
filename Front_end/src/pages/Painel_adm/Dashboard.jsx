@@ -139,7 +139,7 @@ function Dashboard() {
           </h1>
 
           <p>
-            Gerencie seus produtos selados e acompanhe os preços do
+            Gerencie seus produtos selados e acompanhe os preços do site
             TCGplayer.
           </p>
 
@@ -147,9 +147,6 @@ function Dashboard() {
 
         <section className="form-section">
 
-          <h3>
-            Cadastrar e Monitorar Produto
-          </h3>
 
           <form
             onSubmit={handleAddProduto}
